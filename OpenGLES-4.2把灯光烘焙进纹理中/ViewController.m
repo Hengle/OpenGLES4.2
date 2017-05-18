@@ -79,8 +79,10 @@ static Scentexs singleI = {{0.5f,-0.5f,-0.5f},{1.0f,0.0f}};
     
     self.upViewMatrix = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(0), 1.0f, 0.0f, 0.0f);
     self.leViewMatrix = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(0), 0.0f, 1.0f, 0.0f);
-    
-    
+    GLKMatrix4 modelView = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(-60), 1.0f, 0.0f, 0.0f);
+    modelView = GLKMatrix4Rotate(modelView, GLKMathDegreesToRadians(-30), 0.0f, 0.0f, 1.0f);
+    modelView = GLKMatrix4Translate(modelView, 0.0f, 0.0f, 0.25f);
+    self.mBaseEffect.transform.modelviewMatrix = modelView;
 
 }
 
@@ -103,6 +105,12 @@ static Scentexs singleI = {{0.5f,-0.5f,-0.5f},{1.0f,0.0f}};
     [self.mBaseEffect prepareToDraw];
     [self.mVertexBuffer drawArrayWithMode:GL_TRIANGLES startVertexIndex:0 numberOfVertices:sizeof(singles)/sizeof(Scentexs)];
     
+}
+- (IBAction)systemStatus:(id)sender {
+    GLKMatrix4 modelView = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(-60), 1.0f, 0.0f, 0.0f);
+    modelView = GLKMatrix4Rotate(modelView, GLKMathDegreesToRadians(-30), 0.0f, 0.0f, 1.0f);
+    modelView = GLKMatrix4Translate(modelView, 0.0f, 0.0f, 0.25f);
+    self.mBaseEffect.transform.modelviewMatrix = modelView;
 }
 
 - (IBAction)upAndDown:(UISlider *)sender {
