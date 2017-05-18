@@ -107,9 +107,13 @@ static Scentexs singleI = {{0.5f,-0.5f,-0.5f},{1.0f,0.0f}};
     
 }
 - (IBAction)systemStatus:(id)sender {
+    ///x轴旋转-60度
     GLKMatrix4 modelView = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(-60), 1.0f, 0.0f, 0.0f);
+    //在以上的基础上，z轴旋转-30度
     modelView = GLKMatrix4Rotate(modelView, GLKMathDegreesToRadians(-30), 0.0f, 0.0f, 1.0f);
+//    在以上的基础上，z轴评议0.25个单位
     modelView = GLKMatrix4Translate(modelView, 0.0f, 0.0f, 0.25f);
+//    将形变量赋值给mBaseEffect形变量
     self.mBaseEffect.transform.modelviewMatrix = modelView;
 }
 
