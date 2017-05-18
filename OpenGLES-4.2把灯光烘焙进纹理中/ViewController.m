@@ -108,6 +108,7 @@ static Scentexs singleI = {{0.5f,-0.5f,-0.5f},{1.0f,0.0f}};
 - (IBAction)upAndDown:(UISlider *)sender {
 
     self.upViewMatrix = GLKMatrix4Rotate(self.leViewMatrix, GLKMathDegreesToRadians(sender.value * -180), 1.0f, 0.0f, 0.0f);
+    self.upViewMatrix = GLKMatrix4Rotate(self.upViewMatrix, GLKMathDegreesToRadians(-30), 0.0f, 0.0f, 1.0f);
     self.mBaseEffect.transform.modelviewMatrix = self.upViewMatrix;
     
 }
@@ -115,6 +116,7 @@ static Scentexs singleI = {{0.5f,-0.5f,-0.5f},{1.0f,0.0f}};
 - (IBAction)leftAndRight:(UISlider *)sender {
     //定义形变量，围绕y轴旋转-60度
     self.leViewMatrix = GLKMatrix4Rotate(self.upViewMatrix, GLKMathDegreesToRadians(sender.value * -180), 0.0f, 1.0f, 0.0f);
+    self.leViewMatrix = GLKMatrix4Rotate(self.leViewMatrix, GLKMathDegreesToRadians(-30), 0.0f, 0.0f, 1.0f);
     self.mBaseEffect.transform.modelviewMatrix = self.leViewMatrix;
 
 }
